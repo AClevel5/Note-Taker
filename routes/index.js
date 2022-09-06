@@ -1,4 +1,15 @@
+//Require express and notes route
 const express = require('express');
-const router = express.Router();
-const path = require('path');
+const notes = require('./notes');
+
+//Create and instance of express.
+const app = express();
+
+//use notes
+app.use('/notes', notes);
+
+//export app
+module.export = app;
+
+
 
