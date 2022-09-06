@@ -35,6 +35,7 @@ notes.post('/', (req, res) => {
 
 });
 
+//Delete notes
 notes.delete('/:id', (req, res) => {
     deleteFromFile('./db/db.json', req.params.id);
     res.status(200).send("ok");
@@ -42,5 +43,5 @@ notes.delete('/:id', (req, res) => {
 
 );
 
-
+//Export Notes
 module.exports = notes;

@@ -1,5 +1,4 @@
-//Require notes route
-
+//Require Notes route
 const notes = require('./notes');
 
 function applyRoutes(app) {
