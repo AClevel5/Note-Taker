@@ -4,7 +4,7 @@ const path = require('path');
 const applyRoutes = require('./routes');
 
 //Setting Port
-const PORT = process.env.port;
+const PORT = process.env.PORT || 3001;
 
 //Create instance of express
 const app = express();
