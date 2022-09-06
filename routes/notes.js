@@ -1,12 +1,12 @@
 //Require express and helper files
 const express = require('express');
 const uuid = require('../helpers/uuid');
-const { readFromFile, readAndAppend } = require('../helpers/fsUtils');
+const { readFromFile, readAndAppend, deleteFromFile } = require('../helpers/fsUtils');
 const notes = express.Router();
 
 //Get to retrieve exisiting notes
 notes.get('/', (req, res) =>
-    readFromFile('../db/db.json').then((data) => res.json(JSON.parse(data)))
+    readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)))
 );
 
 //Post to add new notes
@@ -18,7 +18,7 @@ notes.post('/', (req, res) => {
         const newNote = {
             title,
             text,
-            note_id: uuid(),
+            id: uuid(),
         };
 
         readAndAppend(newNote, './db/db.json');
@@ -34,5 +34,13 @@ notes.post('/', (req, res) => {
     }
 
 });
+
+notes.delete('/:id', (req, res) => {
+    deleteFromFile('./db/db.json', req.params.id);
+    res.status(200).send("ok");
+}
+
+);
+
 
 module.exports = notes;

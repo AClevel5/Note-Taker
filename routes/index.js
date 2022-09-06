@@ -1,15 +1,13 @@
-//Require express and notes route
-const express = require('express');
+//Require notes route
+
 const notes = require('./notes');
 
-//Create and instance of express.
-const app = express();
-
-//use notes
-app.use('/notes', notes);
+function applyRoutes(app) {
+    app.use('/api/notes', notes);
+};
 
 //export app
-module.export = app;
+module.exports = applyRoutes;
 
 
 
